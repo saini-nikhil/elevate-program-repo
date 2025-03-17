@@ -1,0 +1,16 @@
+#mainCont {
+ 
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 10px; 
+}
+
+#cont{
+  border: 2px solid green;
+
+ 
+}
+
+
+
+

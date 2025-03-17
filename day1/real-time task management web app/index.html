@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Real Time Task Management</h1>
+    <div>
+      <form id="taskform">
+        <input type="text" placeholder="title" id="tasktitle" />
+        <input type="text" placeholder="description" id="taskdescription" />
+        <select id="taskPriorty">
+          <option value="Low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="High">High</option>
+        </select>
+        <input type="submit" />
+      </form>
+      <br />
+      <div>
+        <label>Filter by Priority:</label>
+        <select id="filterPriority">
+          <option value="All">All</option>
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+        </select>
+
+        <label>Sort by:</label>
+        <select id="sortTasks">
+          <option value="default">Default</option>
+          <option value="title">Alphabetically</option>
+          <option value="priority">Priority</option>
+        </select>
+      </div>
+      <ul id="tasklist"></ul>
+    </div>
+  </body>
+</html>
+
+<script>
+  document.getElementById("taskform").addEventListener("submit", function (e) {
+    e.preventDefault();
+    addtask();
+    clearInputs();
+  });
+
+  const tasks = JSON.parse(localStorage.getItem("tasks")) || []
+  rendertask()
+  function addtask() {
+    const title = document.getElementById("tasktitle").value;
+    const description = document.getElementById("taskdescription").value;
+    const priority = document.getElementById("taskPriorty").value;
+    let task = {
+      id: Date.now(),
+      title,
+      description,
+      priority,
+    };
+    console.log(task)
+
+    tasks.push(task);
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    console.log(tasks);
+    rendertask();
+  }
+
+  function rendertask() {
+    const taskList = document.getElementById("tasklist");
+    taskList.innerHTML = "";
+
+  
+    tasks.forEach((task) => {
+      const li = document.createElement("li");
+      li.innerHTML = `Title: ${task.title} <br> Priority : ${task.priority}<br>
+         Desc: ${task.description}`;
+      // li.innerHTML =` desc: ${task.description}`/
+
+      taskList.appendChild(li);
+    });
+
+    const list = document.createElement("");
+  }
+
+  function clearInputs() {
+    document.getElementById("tasktitle").value = "";
+    document.getElementById("taskdescription").value = "";
+    document.getElementById("taskPriorty").value = "Low";
+  }
+</script>
