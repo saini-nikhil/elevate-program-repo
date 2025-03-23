@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar as CalendarIcon, Clock, Filter, Search, User, Bell, Home, CheckCircle, MapPin, Star, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Sun, Moon } from 'lucide-react';
+import { Calendar as CalendarIcon, Clock, Filter, Search, CheckCircle, } from 'lucide-react';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 import Navigation from './components/Navigation';
 import Pagination from './components/Pagination';
@@ -118,13 +118,13 @@ function AppContent() {
   }, [selectedDate, appointments]);
 
   // Calendar functions
-  const getDaysInMonth = (year, month) => {
-    return new Date(year, month + 1, 0).getDate();
-  };
+  // const getDaysInMonth = (year, month) => {
+  //   return new Date(year, month + 1, 0).getDate();
+  // };
 
-  const getFirstDayOfMonth = (year, month) => {
-    return new Date(year, month, 1).getDay();
-  };
+  // const getFirstDayOfMonth = (year, month) => {
+  //   return new Date(year, month, 1).getDay();
+  // };
 
   const getPreviousMonth = () => {
     const date = new Date(currentDate);
