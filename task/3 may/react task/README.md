@@ -44,7 +44,7 @@ npm install
 npm run dev
 ```
 
-4. Open [https://elevate-program-repo-pobf.vercel.app](http://localhost:5173) in your browser
+4. Open [live link](https://elevate-program-repo-pobf.vercel.app) in your browser
 
 ## 📂 Project Structure
 
